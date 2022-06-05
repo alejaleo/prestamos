@@ -36,6 +36,11 @@ export function globalMetaReducer(reducer: ActionReducer<any>): ActionReducer<an
           ...state,
           contador: action.payload.contador
         };
+        case ActionTypes.putCapitalBaseBank:
+        return {
+          ...state,
+          contador: action.payload.money
+        };
       default:
         return reducer(state, action);
     }

@@ -1,11 +1,47 @@
-<h1>Hola Aleja</h1>
-<h1>{{(state$ | async).contador}}</h1>
 
-<button (click)="cambiar(1)">Aumentar +1</button>
-<br>
-<button (click)="cambiar(-1)">Reducir -1</button>
+<mat-toolbar class="mat-elevation-z8">
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+  Prestamos Banco A
+</mat-toolbar>
 
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <img class="avatar mat-elevation-z8" src="https://source.unsplash.com/c_GmwfHBDzk/200x200" />
+    <h4 class="name">John Smith</h4>
+    <p class="designation">Software Engineer</p>
 
-<li><a routerLink="/bank/application">aplicacion</a></li>
-<li><a routerLink="/bank/payment">pagar</a></li>
-<router-outlet></router-outlet>
+    <mat-divider></mat-divider>
+    <button mat-button class="menu-button" routerLink="/bank/payment">
+      <mat-icon>home</mat-icon>
+      <span>payment</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/bank/application">
+      <mat-icon>person</mat-icon>
+      <span>application</span>
+    </button>
+    <mat-divider></mat-divider>
+    <div>
+      <h4 class="name">Banco</h4>
+    </div>
+    <div class="menu-button-bank">
+      <span>monto total:</span>
+      <span>10.000.000</span>
+    </div>
+    <div class="menu-button-bank">
+      <span>monto prestado:</span>
+      <span>4.000.000</span>
+    </div>
+    <div class="menu-button-bank">
+      <span>monto restante:</span>
+      <span>6.000.000</span>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

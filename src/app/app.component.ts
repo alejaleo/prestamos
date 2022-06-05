@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { getContador, putContador, setContador } from './config/global.action';
+import { getContador, putCapitalBaseBank, putContador, setContador } from './config/global.action';
+import { BreakpointObserver, MediaMatcher } from '@angular/cdk/layout';
+import { MatSidenav } from '@angular/material/sidenav';
+
 
 @Component({
   selector: 'app-root',
@@ -9,24 +12,46 @@ import { getContador, putContador, setContador } from './config/global.action';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  @ViewChild(MatSidenav) sidenav!: MatSidenav;
+
   constructor(
     private store: Store<any>,
-  ) { }
+    private observer: BreakpointObserver
+  ) {
 
-  state$: Observable<any> = this.store.select(state => state);
+  }
+
+  state$: Observable<any> = this.store.select(state => state['contador']);
+  stateSubcription: Subscription = new Subscription;
   state: any;
 
+
+
+
+  ngAfterViewInit() {
+    this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
+      if (res.matches) {
+        this.sidenav.mode = 'over';
+        this.sidenav.close();
+      } else {
+        this.sidenav.mode = 'side';
+        this.sidenav.open();
+      }
+    });
+  }
   ngOnInit() {
-    console.log('hola')
-    this.store.dispatch(new getContador())
+    this.stateSubcription=this.state$.subscribe((contador) => {
+      if(contador){
+        this.state = contador.contador;
+        console.log(this.state, "hola2");
+      }
 
-    this.state$.subscribe((state) => {
-      this.state = state.contador
     })
+
   }
 
-  cambiar(num: number) {
-    let number = this.state + num
-    this.store.dispatch(new putContador({num: number}))
-  }
+
+
+
+
 }
