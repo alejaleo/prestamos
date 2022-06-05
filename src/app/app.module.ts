@@ -30,7 +30,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     }),
     AngularFireModule.initializeApp(environment.firebase),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot(effects),
+    EffectsModule.forRoot(effects)
   ],
   providers: [],
   bootstrap: [AppComponent]
