@@ -1,1 +1,6 @@
-<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+<h1>Hola Aleja</h1>
+<h1>{{(state$ | async).contador}}</h1>
+
+<button (click)="cambiar(1)">Aumentar +1</button>
+<br>
+<button (click)="cambiar(-1)">Reducir -1</button>
