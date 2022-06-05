@@ -3,7 +3,21 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyANlD5ZQtnixc9ZI3RIjMWeoVXYOW3YvGY",
+    authDomain: "prestamos-banco.firebaseapp.com",
+    databaseURL: "https://prestamos-banco-default-rtdb.firebaseio.com",
+    projectId: "prestamos-banco",
+    storageBucket: "prestamos-banco.appspot.com",
+    messagingSenderId: "863604962719",
+    appId: "1:863604962719:web:c43f65221598bf00eaf9aa",
+    measurementId: "G-S86CX4J6LE"
+  }
+
+  // Initialize Firebase
+  //const app = initializeApp(firebaseConfig);
+  //const analytics = getAnalytics(app);
 };
 
 /*

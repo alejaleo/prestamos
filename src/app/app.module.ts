@@ -11,6 +11,8 @@ import { reducers, metaReducers } from './config/global.reducer';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { effects } from './config/global.effects';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,11 @@ import { effects } from './config/global.effects';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSliderModule,
+    AngularFirestoreModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
+    AngularFireModule.initializeApp(environment.firebase),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot(effects),
   ],
