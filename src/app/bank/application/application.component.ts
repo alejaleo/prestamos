@@ -1,4 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { ModalAddUserComponent } from '../modal-add-user/modal-add-user.component';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Observable, Subscription } from 'rxjs';
+import { getUsers } from 'src/app/config/global.action';
+
+export interface columns {
+  name: string;
+  email: string;
+  cc: number;
+}
 
 @Component({
   selector: 'app-application',
@@ -6,10 +19,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./application.component.css']
 })
 export class ApplicationComponent implements OnInit {
+  displayedColumns: string[] = ['name', 'email', 'cc'];
+  dataSource: columns[] = [];
 
-  constructor() { }
+
+  data$: Observable<any> = this.store.select(state => state.data);
+  data: any;
+
+  constructor(
+    private dialog: MatDialog,
+    private router: Router,
+    private store: Store<any>,
+    private formBuilder: FormBuilder,
+    private ref: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
+    this.dataSource = [
+      { name: "", email: "", cc: 0 },
+      { name: "", email: "", cc: 0 }];
+    this.data$.subscribe((data) => {
+      if (data) {
+        console.log("data", data);
+        this.dataSource = data;
+        console.log("datasourse", this.dataSource);
+      }
+    })
+
+
+  }
+  openModal() {
+    this.dialog.open(ModalAddUserComponent, { width: '30vw', height: '22rem' })
+    console.log("entra")
+
   }
 
 }

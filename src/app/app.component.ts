@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { getContador, putCapitalBaseBank, putContador, setContador } from './config/global.action';
+import { putCapitalBaseBank, putContador, setContador, initialState, getUsers } from './config/global.action';
 import { BreakpointObserver, MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 
@@ -17,18 +17,16 @@ export class AppComponent implements OnInit {
   constructor(
     private store: Store<any>,
     private observer: BreakpointObserver
-  ) {
-
-  }
-
-  state$: Observable<any> = this.store.select(state => state['contador']);
-  stateSubcription: Subscription = new Subscription;
-  state: any;
+  ) { }
 
 
+
+  capitalBank$: Observable<any> = this.store.select(state => state.capitalBank);
+  capitalBank: any;
 
 
   ngAfterViewInit() {
+    this.store.dispatch(new initialState());
     this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
       if (res.matches) {
         this.sidenav.mode = 'over';
@@ -40,18 +38,18 @@ export class AppComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.stateSubcription=this.state$.subscribe((contador) => {
-      if(contador){
-        this.state = contador.contador;
-        console.log(this.state, "hola2");
-      }
+    this.store.dispatch(new getUsers());
+    this.capitalBank$.subscribe((capital) => {
+      if (capital) {
+        this.capitalBank = new Intl.NumberFormat('es-CO', {
+          style: 'currency',
+          currency: 'COP',
+        }).format(capital);
 
+
+      }
     })
 
+
   }
-
-
-
-
-
 }

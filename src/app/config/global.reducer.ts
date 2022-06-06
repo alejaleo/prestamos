@@ -17,15 +17,26 @@ export const reducers: ActionReducerMap<State> = {
 };
 
 export interface GlobalState {
-  contador: number;
+  capitalBank: number;
+  modalAddUser: object;
+  menssage: string;
+  data: object;
+
 }
 
 export const inicialStateGlobal: GlobalState = {
-  contador: 0
+  capitalBank: environment.capitalBase,
+  modalAddUser: {},
+  menssage: "",
+  data: {}
 };
 
 export function globalReducer(state: GlobalState = inicialStateGlobal, action: actions): GlobalState {
-  return state;
+  switch (action.type) {
+    default: {
+      return state;
+    }
+  }
 }
 
 export function globalMetaReducer(reducer: ActionReducer<any>): ActionReducer<any> {
@@ -34,13 +45,28 @@ export function globalMetaReducer(reducer: ActionReducer<any>): ActionReducer<an
       case ActionTypes.setContador:
         return {
           ...state,
-          contador: action.payload.contador
+          capitalBank: action.payload.contador
         };
-        case ActionTypes.putCapitalBaseBank:
+      case ActionTypes.modalAddUser:
         return {
           ...state,
-          contador: action.payload.money
+          modalAddUser: action.payload.user
         };
+      case ActionTypes.message:
+        return {
+          ...state,
+          message: action.payload.message
+        };
+      case ActionTypes.data:
+        return {
+          ...state,
+          data: action.payload.data
+        };
+      case ActionTypes.initialState:
+        return {
+          ...inicialStateGlobal
+        };
+
       default:
         return reducer(state, action);
     }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ApplicationComponent } from './application/application.component';
 import { PaymentComponent } from './payment/payment.component';
 
+
 const routes: Routes = [
 {
   path:'',
@@ -18,6 +19,8 @@ const routes: Routes = [
   declarations: [],
   imports: [
     RouterModule.forChild(routes)
+
+
 
   ]
 })

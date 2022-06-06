@@ -1,0 +1,22 @@
+table {
+  width: 96%;
+    margin: 1rem auto;
+    margin-left: 2vw;
+}
+.paddingSearch {
+  margin-top: 1em;
+}
+.btnAdd{
+  background-color: #484848;
+}
+.create {
+
+  background-color: #484848;
+}
+.buttons {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.marginContainer{
+  margin: 2rem;
+}

@@ -1,0 +1,40 @@
+<div>
+  <div class="modal">
+    <button type="button" class="close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div >
+      <h1>Crear usuario</h1>
+    </div>
+  </div>
+  <form id="modalAdd" [formGroup]="form" >
+
+      <div class="column">
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombre</mat-label>
+          <input  value="" matInput type="text" formControlName="name"
+            class="form-control" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>email</mat-label>
+          <input  value="" matInput type="text" formControlName="email"
+            class="form-control" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>cc</mat-label>
+          <input  value="" matInput type="text" formControlName="cc"
+            class="form-control" />
+        </mat-form-field>
+      </div>
+
+    <div class="container-close-modal">
+      <button class="btn-save" (click)="closeModal()">cancelar</button>
+      <button class="btn-save" type="submit" (click)="saveModal()">Crear</button>
+    </div>
+  </form>
+
+
+
+
+
+
