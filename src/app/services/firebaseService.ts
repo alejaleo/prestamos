@@ -19,4 +19,8 @@ export class FirebaseService {
   deleteFirebase(collectionFirebase:string, idFirebase:string){
     return this.firebase.collection(collectionFirebase).doc(idFirebase).delete();
   }
+
+  putFirebase(collectionFirebase:string, idFirebase:string, object:object){
+    return this.firebase.collection(collectionFirebase).doc(idFirebase).update(object);
+  }
 }

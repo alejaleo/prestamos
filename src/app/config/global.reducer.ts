@@ -21,6 +21,7 @@ export interface GlobalState {
   modalAddUser: object;
   menssage: string;
   data: object;
+  userActual: object;
 
 }
 
@@ -28,7 +29,8 @@ export const inicialStateGlobal: GlobalState = {
   capitalBank: environment.capitalBase,
   modalAddUser: {},
   menssage: "",
-  data: {}
+  data: {},
+  userActual: {}
 };
 
 export function globalReducer(state: GlobalState = inicialStateGlobal, action: actions): GlobalState {
@@ -61,6 +63,11 @@ export function globalMetaReducer(reducer: ActionReducer<any>): ActionReducer<an
         return {
           ...state,
           data: action.payload.data
+        };
+      case ActionTypes.data:
+        return {
+          ...state,
+          UserActual: action.payload.user
         };
       case ActionTypes.initialState:
         return {

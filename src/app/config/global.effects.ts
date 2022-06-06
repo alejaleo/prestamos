@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { tap, withLatestFrom, map, mergeMap, filter, exhaustMap, catchError, concatMap, switchMap, delay, take, takeUntil } from 'rxjs/operators';
 import { FirebaseService } from '../services/firebaseService';
-import { ActionTypes, putContador, setContador, addUsers, message, data } from './global.action';
+import { ActionTypes, putUserCredit, setContador, addUsers, message, data } from './global.action';
 import { from } from 'rxjs';
 
 @Injectable()
@@ -39,13 +39,14 @@ export class GeneralEffects {
         return [];
       })
     ), {});
-  putContador$ = createEffect(() =>
+    putUserCredit$ = createEffect(() =>
     this.actions$.pipe(
-      ofType<putContador>(ActionTypes.putContador),
+      ofType<putUserCredit>(ActionTypes.putUserCredit),
       exhaustMap((action) => {
-        return from(this.firebaseService.addFirebase("contador", { num: action.payload.num })).pipe(
+        console.log("action de que le llega al put", action);
+        return from(this.firebaseService.putFirebase(action.payload.collectionName,"hola",action.payload.user)).pipe(
           map((response) => {
-            return new setContador({ contador: action.payload.num })
+            return new setContador({ contador: 0 })
           })
         )
       }),

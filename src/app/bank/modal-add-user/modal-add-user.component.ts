@@ -16,7 +16,7 @@ export class ModalAddUserComponent implements OnInit {
 
   form: FormGroup;
   formEdit: FormGroup;
-  durationInSeconds = 5;
+  durationInSeconds = 3;
 
   message$: Observable<any> = this.store.select(state => state.message);
   message: any;
@@ -56,7 +56,6 @@ export class ModalAddUserComponent implements OnInit {
 
   closeModal() {
     this.dialogRef.close()
-    this.store.dispatch(new modalAddUser({ user: {} }));
   }
 
   saveModal() {

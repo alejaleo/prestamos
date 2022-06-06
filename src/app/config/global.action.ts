@@ -5,13 +5,15 @@ export enum ActionTypes {
   initialState = '[global] initialState',
   ApiError = '[global] ApiError',
   setContador = '[global] setContador',
-  putContador = '[global] putContador',
+  putUserCredit = '[global] putUserCredit',
   getUsers = '[global] getUsers',
   putCapitalBaseBank = '[global] putCapitalBaseBank',
   addUsers = '[global] addUsers',
   modalAddUser = '[global] modalAddUser',
   message = '[global]  message',
   data = '[global]  data',
+  userActual = '[global]  userActual'
+
 }
 
 
@@ -29,9 +31,9 @@ export class getUsers implements Action {
   readonly type = ActionTypes.getUsers;
 }
 
-export class putContador implements Action {
-  readonly type = ActionTypes.putContador;
-  constructor(public payload: { num: number }) { }
+export class putUserCredit implements Action {
+  readonly type = ActionTypes.putUserCredit;
+  constructor(public payload: { collectionName: string, id:string, user:object }) { }
 }
 
 export class putCapitalBaseBank implements Action {
@@ -63,6 +65,11 @@ export class data implements Action {
   constructor(public payload: { data: object }) { }
 }
 
+export class userActual implements Action {
+  readonly type = ActionTypes.userActual;
+  constructor(public payload: { user: object }) { }
+}
+
 export type actions =
   ApiError
   | setContador
@@ -73,3 +80,5 @@ export type actions =
   | message
   | getUsers
   | data
+  | userActual
+  |putUserCredit

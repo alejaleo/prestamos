@@ -15,6 +15,7 @@ import { ModalAddUserComponent } from './modal-add-user/modal-add-user.component
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ModalApplicationComponent } from './modal-application/modal-application.component';
 
 
 
@@ -22,7 +23,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
   declarations: [
     ApplicationComponent,
     PaymentComponent,
-    ModalAddUserComponent
+    ModalAddUserComponent,
+    ModalApplicationComponent
   ],
   imports: [
     CommonModule,

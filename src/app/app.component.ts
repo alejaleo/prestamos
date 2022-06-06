@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { putCapitalBaseBank, putContador, setContador, initialState, getUsers } from './config/global.action';
+import { putCapitalBaseBank, putUserCredit, setContador, initialState, getUsers } from './config/global.action';
 import { BreakpointObserver, MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 
