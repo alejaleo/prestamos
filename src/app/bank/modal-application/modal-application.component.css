@@ -1,0 +1,44 @@
+.modal {
+  position: relative;
+  display: block;
+  text-align: center;
+  padding: 0%;
+}
+.close {
+  position: absolute;
+  right: 0px;
+  float: right;
+  font-size: 30px;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 rgb(146, 0, 0);
+  opacity: 0.2;
+  z-index: 100;
+
+}
+
+
+.column {
+  display: flex;
+  flex-direction: column;
+
+  margin: 1vw;
+}
+
+.container-close-modal {
+  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.btn-save {
+  height: 40px;
+  width: 115px;
+  background-color: #484848;
+  color: #ffffff;
+  margin-left: 1vw;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}

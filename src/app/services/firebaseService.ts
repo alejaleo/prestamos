@@ -7,20 +7,20 @@ import { Observable } from "rxjs";
 })
 export class FirebaseService {
   constructor(private firebase: AngularFirestore) { }
-
+//servicio firebase conectado a redux adicionar usuarios
   addFirebase(collectionFirebase: string, objectFirebase: object):Promise<any>{
     return this.firebase.collection(collectionFirebase).add(objectFirebase);
   }
-
+//traer usuarios
   getFirebase(collectionFirebase: string):Observable<any>{
-    return this.firebase.collection(collectionFirebase).snapshotChanges();
+    return this.firebase.collection(collectionFirebase, ref => ref.orderBy('dateCreate','asc')).snapshotChanges();
   }
-
-  deleteFirebase(collectionFirebase:string, idFirebase:string){
+//borrar usuarios
+ /*  deleteFirebase(collectionFirebase:string, idFirebase:string){
     return this.firebase.collection(collectionFirebase).doc(idFirebase).delete();
-  }
-
-  putFirebase(collectionFirebase:string, idFirebase:string, object:object){
+  } */
+//actualizar usuarios
+  putFirebase(collectionFirebase:string, idFirebase:string, object:object):Promise<any>{
     return this.firebase.collection(collectionFirebase).doc(idFirebase).update(object);
   }
 }

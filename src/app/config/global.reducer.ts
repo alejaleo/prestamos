@@ -20,8 +20,11 @@ export interface GlobalState {
   capitalBank: number;
   modalAddUser: object;
   menssage: string;
-  data: object;
+  data: Array<any>;
+  dataPayment:  Array<any>;
   userActual: object;
+  currencyBorrowed: number;
+  typeModal:string;
 
 }
 
@@ -29,8 +32,11 @@ export const inicialStateGlobal: GlobalState = {
   capitalBank: environment.capitalBase,
   modalAddUser: {},
   menssage: "",
-  data: {},
-  userActual: {}
+  data: [],
+  dataPayment: [],
+  userActual: {},
+  currencyBorrowed: 0,
+  typeModal:"apply"
 };
 
 export function globalReducer(state: GlobalState = inicialStateGlobal, action: actions): GlobalState {
@@ -44,10 +50,10 @@ export function globalReducer(state: GlobalState = inicialStateGlobal, action: a
 export function globalMetaReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return function (state: State, action: any) {
     switch (action.type) {
-      case ActionTypes.setContador:
+      case ActionTypes.putCapitalBaseBank:
         return {
           ...state,
-          capitalBank: action.payload.contador
+          capitalBank: action.payload.money
         };
       case ActionTypes.modalAddUser:
         return {
@@ -64,11 +70,26 @@ export function globalMetaReducer(reducer: ActionReducer<any>): ActionReducer<an
           ...state,
           data: action.payload.data
         };
-      case ActionTypes.data:
+      case ActionTypes.dataPayment:
         return {
           ...state,
-          UserActual: action.payload.user
+          dataPayment: action.payload.data
         };
+      case ActionTypes.userActual:
+        return {
+          ...state,
+          userActual: action.payload.user
+        };
+      case ActionTypes.currencyBorrowed:
+        return {
+          ...state,
+          currencyBorrowed: action.payload.money
+        };
+        case ActionTypes.typeModal:
+          return {
+            ...state,
+            typeModal: action.payload.modal
+          };
       case ActionTypes.initialState:
         return {
           ...inicialStateGlobal

@@ -25,3 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+hola! para que puedas visualizar el proyecto simplemente descargalo y ejecuta:
+npm install
+ng serve -o
+El proyecto esta hecho en angular con ngrx, material y firebase, se realizo el ejercicio con los requerimientos solciitados utiliza lazy load, reutilizacion de componentes y es responsive.
+El capital base del banco se puede modificar desde el archivo de enviroments.ts siempre que se inicialice el proyecto el valor se volvera a setiar.
+Espero te guste!! 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,42 @@
+table {
+  width: 96%;
+    margin: 1rem auto;
+    margin-left: 2vw;
+}
+.paddingSearch {
+  margin-top: 1em;
+}
+.btnAdd{
+  background-color: #484848;
+}
+.create {
+
+  background-color: #484848;
+}
+.buttons {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.marginContainer{
+  margin: 2rem;
+}
+
+mat-header-cell, mat-cell {
+  justify-content: center;
+}
+
+td, th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+.title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 3.5vh;
+}
+.bot{
+  background-color: #ff0000;
+  color: white;
+}

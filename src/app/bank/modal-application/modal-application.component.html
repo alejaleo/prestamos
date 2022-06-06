@@ -1,1 +1,54 @@
-<p>modal-application works!</p>
+<div *ngIf="typeModal=='apply'">
+  <div class="modal">
+    <button type="button" class="close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div>
+      <h1>Solicitud Prestamo</h1>
+    </div>
+  </div>
+  <form id="modalApplication" [formGroup]="form">
+    <div class="column">
+      <mat-form-field class="example-full-width">
+        <mat-label>Monto a Solicitar</mat-label>
+        <input value="" matInput type="text" formControlName="amount" class="form-control" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Fecha de pago</mat-label>
+        <input value="" matInput [matDatepicker]="picker" formControlName="date" class="form-control" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="container-close-modal">
+      <button class="btn-save" (click)="closeModal()">cancelar</button>
+      <button class="btn-save" type="submit" (click)="saveModalApplication('apply')">Crear</button>
+    </div>
+  </form>
+</div>
+<div *ngIf="typeModal==='pay'">
+  <div class="modal">
+    <button type="button" class="close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div>
+      <h1>Pagar Prestamos</h1>
+    </div>
+  </div>
+  <form id="modalApplication" [formGroup]="formTwo">
+    <div class="column">
+      <mat-form-field class="example-full-width">
+        <mat-label>Monto en Deuda</mat-label>
+        <input value="" matInput type="text" formControlName="amount" class="form-control" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Monto a Pagar</mat-label>
+        <input value="" matInput type="text" formControlName="pay" class="form-control" />
+      </mat-form-field>
+    </div>
+    <div class="container-close-modal">
+      <button class="btn-save" (click)="closeModal()">cancelar</button>
+      <button class="btn-save" type="submit" (click)="saveModalApplication('pay')">Pagar</button>
+    </div>
+  </form>
+</div>

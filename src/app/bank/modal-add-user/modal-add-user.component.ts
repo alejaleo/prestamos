@@ -14,7 +14,7 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class ModalAddUserComponent implements OnInit {
 
-  form: FormGroup;
+  form: FormGroup ;
   formEdit: FormGroup;
   durationInSeconds = 3;
 
@@ -36,33 +36,37 @@ export class ModalAddUserComponent implements OnInit {
   ngOnInit() {
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       cc: ['', Validators.required],
     });
 
 
     this.message$.subscribe((message) => {
-      console.log("mensaje", message);
       if (message) {
         this.openSnackBar(message);
       }
-
     })
   }
 
-  openSnackBar(message:string) {
+  openSnackBar(message: string) {
     this.snackBar.open(message);
   }
 
   closeModal() {
     this.dialogRef.close()
   }
-
+//se despacha acion para crear usuario
   saveModal() {
-    console.log(this.form.value)
+    let dateCreate = new Date();
+    let users = {
+      name: this.form.value.name,
+      email: this.form.value.email,
+      cc: this.form.value.cc,
+      dateCreate: dateCreate
+    }
     if (this.form.valid) {
       this.dialogRef.close()
-      this.store.dispatch(new addUsers({ collectionName: "Users", user: this.form.value }));
+      this.store.dispatch(new addUsers({ collectionName: "Users", user: users }));
     }
   }
 }

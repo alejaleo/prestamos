@@ -20,3 +20,30 @@ table {
 .marginContainer{
   margin: 2rem;
 }
+mat-header-cell, mat-cell {
+  justify-content: center;
+}
+
+td, th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}mat-header-cell, mat-cell {
+  justify-content: center;
+}
+
+td, th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bot{
+  background-color: #ff0000;
+  color: white;
+}

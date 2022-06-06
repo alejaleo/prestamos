@@ -4,27 +4,26 @@
     <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
     <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
   </button>
-  Prestamos Banco A
+  <h1 class="titleBank"><b>Prestamo Banco</b></h1>
 </mat-toolbar>
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
-    <img class="avatar mat-elevation-z8" src="https://source.unsplash.com/c_GmwfHBDzk/200x200" />
-    <h4 class="name">John Smith</h4>
-    <p class="designation">Software Engineer</p>
-
+    <img class="avatar mat-elevation-z8" src="https://media-exp1.licdn.com/dms/image/C4D03AQGWU5kldwQNpQ/profile-displayphoto-shrink_800_800/0/1599315542766?e=1660176000&v=beta&t=f3DnW1wRyNWbSk8ExbwquuRBa8V1mW7y2bitIOA1IeI" />
+    <h2 class="name">Alejandra Leon</h2>
+    <p class="designation">Asistente Bancario</p>
     <mat-divider></mat-divider>
     <button mat-button class="menu-button" routerLink="/bank/payment">
-      <mat-icon>home</mat-icon>
-      <span>payment</span>
+      <mat-icon> attach_money</mat-icon>
+      <span>Pagar Deuda</span>
     </button>
     <button mat-button class="menu-button" routerLink="/bank/application">
-      <mat-icon>person</mat-icon>
-      <span>application</span>
+      <mat-icon>person_add</mat-icon>
+      <span>Solicitar prestamo</span>
     </button>
     <mat-divider></mat-divider>
     <div>
-      <h4 class="name">Banco</h4>
+      <h2 class="name">Banco</h2>
     </div>
     <div class="menu-button-bank">
       <span>monto total:</span>
@@ -32,12 +31,9 @@
     </div>
     <div class="menu-button-bank">
       <span>monto prestado:</span>
-      <span>4.000.000</span>
+      <span>{{currencyBorrowed}}</span>
     </div>
-    <div class="menu-button-bank">
-      <span>monto restante:</span>
-      <span>6.000.000</span>
-    </div>
+
   </mat-sidenav>
   <mat-sidenav-content>
     <div >

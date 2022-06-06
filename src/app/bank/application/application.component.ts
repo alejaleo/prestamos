@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
-import { getUsers, userActual } from 'src/app/config/global.action';
+import { getUsers, userActual, typeModal } from 'src/app/config/global.action';
 import { ModalApplicationComponent } from '../modal-application/modal-application.component';
 
 export interface columns {
@@ -23,7 +23,6 @@ export class ApplicationComponent implements OnInit {
   displayedColumns: string[] = ['name', 'email', 'cc', 'actions'];
   dataSource: columns[] = [];
 
-
   data$: Observable<any> = this.store.select(state => state.data);
   data: any;
 
@@ -35,30 +34,21 @@ export class ApplicationComponent implements OnInit {
     private ref: ChangeDetectorRef
   ) { }
 
-  ngOnInit(): void {
-
+  ngOnInit() {
     this.data$.subscribe((data) => {
       if (data) {
-        console.log("data", data);
         this.dataSource = data;
-        console.log("datasourse", this.dataSource);
       }
     })
-
-
   }
   openModal() {
     this.dialog.open(ModalAddUserComponent, { width: '30vw', height: '22rem' })
-    console.log("entra")
-
   }
-
-  openModalApply(row:any) {
-    console.log("event",row)
-    this.store.dispatch(new userActual(row));
-    this.dialog.open(ModalApplicationComponent, { width: '30vw', height: '22rem' })
-    console.log("entra")
-
+//le  dice cual model se abrira segun el evento
+  openModalApply(row:any, event:any) {
+    this.store.dispatch(new typeModal({modal:event}));
+    this.store.dispatch(new userActual({user:row}));
+    this.dialog.open(ModalApplicationComponent, { width: '30vw', height: '18rem' })
   }
 
 }

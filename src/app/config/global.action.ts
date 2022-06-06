@@ -4,7 +4,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 export enum ActionTypes {
   initialState = '[global] initialState',
   ApiError = '[global] ApiError',
-  setContador = '[global] setContador',
   putUserCredit = '[global] putUserCredit',
   getUsers = '[global] getUsers',
   putCapitalBaseBank = '[global] putCapitalBaseBank',
@@ -12,7 +11,11 @@ export enum ActionTypes {
   modalAddUser = '[global] modalAddUser',
   message = '[global]  message',
   data = '[global]  data',
-  userActual = '[global]  userActual'
+  userActual = '[global]  userActual',
+  currencyBorrowed = '[global]  currencyBorrowed',
+  dataPayment = '[global] dataPayment',
+  typeModal = '[global] typeModal',
+
 
 }
 
@@ -22,10 +25,6 @@ export class ApiError implements Action {
   constructor(public payload: { error: HttpErrorResponse }) { }
 }
 
-export class setContador implements Action {
-  readonly type = ActionTypes.setContador;
-  constructor(public payload: { contador: number }) { }
-}
 
 export class getUsers implements Action {
   readonly type = ActionTypes.getUsers;
@@ -33,7 +32,7 @@ export class getUsers implements Action {
 
 export class putUserCredit implements Action {
   readonly type = ActionTypes.putUserCredit;
-  constructor(public payload: { collectionName: string, id:string, user:object }) { }
+  constructor(public payload: { collectionName: string, id: string, user: object }) { }
 }
 
 export class putCapitalBaseBank implements Action {
@@ -65,14 +64,30 @@ export class data implements Action {
   constructor(public payload: { data: object }) { }
 }
 
+export class dataPayment implements Action {
+  readonly type = ActionTypes.dataPayment;
+  constructor(public payload: { data: object }) { }
+}
+
 export class userActual implements Action {
   readonly type = ActionTypes.userActual;
   constructor(public payload: { user: object }) { }
 }
 
+export class currencyBorrowed implements Action {
+  readonly type = ActionTypes.currencyBorrowed;
+  constructor(public payload: { money: object }) { }
+}
+
+export class typeModal implements Action {
+  readonly type = ActionTypes.typeModal;
+  constructor(public payload: { modal: string }) { }
+}
+
+
+
 export type actions =
   ApiError
-  | setContador
   | putCapitalBaseBank
   | initialState
   | addUsers
@@ -80,5 +95,9 @@ export type actions =
   | message
   | getUsers
   | data
+  | dataPayment
   | userActual
-  |putUserCredit
+  | putUserCredit
+  | currencyBorrowed
+  | typeModal
+

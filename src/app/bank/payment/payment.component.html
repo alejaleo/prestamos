@@ -1,1 +1,29 @@
-<p>payment works!</p>
+<div class="marginContainer">
+  <mat-card class="mat-elevation-z8 table title">
+    <h2><b>Solicitudes Aprobadas y Pago de Prestamos</b></h2>
+  </mat-card>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nombre Cliente</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef>Monto Por Pagar</th>
+      <td mat-cell *matCellDef="let element">{{ element.amount | currency }}</td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Fecha Estimada de Pago</th>
+      <td mat-cell *matCellDef="let element">{{ element.date.toDate() | date:'yyyy/MM/dd'}}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let row; index as i">
+        <button mat-raised-button class="bot" (click)="openModalApply(row,'pay')">
+          <span>Pagar prestamo</span>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
